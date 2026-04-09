@@ -1,13 +1,5 @@
 # Cinema Ticket EAI - Spring Boot Multi Project
 
-Project ini dibuat sesuai catatan kamu:
-- **banyak project Spring Boot**, bukan satu project jadi satu
-- **minimal 4 service** -> di sini ada **5 service**
-- **pakai Postman**
-- **pakai database**, bukan static map
-- **ada validasi**
-- **pakai RabbitMQ** untuk message broker
-
 ## Daftar service
 1. `schedule-service` (port **8081**)
 2. `seat-service` (port **8082**)
