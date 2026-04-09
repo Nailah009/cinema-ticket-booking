@@ -1,0 +1,195 @@
+{
+  "info": {
+    "name": "Cinema Ticket EAI",
+    "_postman_id": "6ea52145-7b63-4cec-9bd2-9034e8a8e8b0",
+    "description": "Collection untuk demo multi-project Spring Boot + RabbitMQ + MySQL",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Schedule - Get Movies",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/movies",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "movies"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Schedule - Get Schedules by Movie",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/movies/MOV-001/schedules",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "movies",
+            "MOV-001",
+            "schedules"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Seat - Get Seats",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/api/seats/schedule/SCH-001",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "api",
+            "seats",
+            "schedule",
+            "SCH-001"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Booking - Create Success",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"Selvya\",\n  \"email\": \"selvya@mail.com\",\n  \"movieId\": \"MOV-001\",\n  \"scheduleId\": \"SCH-001\",\n  \"seats\": [\n    \"A1\",\n    \"A2\"\n  ],\n  \"paymentMethod\": \"QRIS\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/api/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "api",
+            "bookings"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Booking - Create Failed Payment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"Dimas\",\n  \"email\": \"dimas@mail.com\",\n  \"movieId\": \"MOV-001\",\n  \"scheduleId\": \"SCH-001\",\n  \"seats\": [\n    \"A3\"\n  ],\n  \"paymentMethod\": \"FAIL\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/api/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "api",
+            "bookings"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Booking - Get By Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8083/api/bookings/{{bookingId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "api",
+            "bookings",
+            "{{bookingId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Payment - Get by Booking Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8084/api/payments/booking/{{bookingId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8084",
+          "path": [
+            "api",
+            "payments",
+            "booking",
+            "{{bookingId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Notification - Get by Booking Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8085/api/notifications/booking/{{bookingId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "api",
+            "notifications",
+            "booking",
+            "{{bookingId}}"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "bookingId",
+      "value": ""
+    }
+  ]
+}
